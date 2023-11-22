@@ -1,0 +1,19 @@
+<!-- <p style="color: green"><%= notice %></p> -->
+
+<%= render 'tags/filter_tags', locals: { tag: @tag, tags: @tags } %>
+
+<section class="container">
+
+  <% @posts.find_in_batches(batch_size: 4) do |posts_group| %>
+    <div class="row my-5">
+
+      <% posts_group.each do |post| %>
+        <div class="col-xl h-100">
+          <%= render post, locals: { post: post } %>
+        </div>
+      <% end %>
+
+    </div>
+  <% end %>
+
+</section>

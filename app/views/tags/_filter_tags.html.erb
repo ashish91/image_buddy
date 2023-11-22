@@ -1,0 +1,14 @@
+<section class="imb-tag-filter">
+  <div class="container h-100 d-flex align-items-center">
+    <div class="row mx-auto">
+      <div class="col-xl h-100">
+        <%= link_to 'All', root_path, class: "imb-badge badge fs-6 #{@tag.nil? ? 'text-bg-dark' : 'text-bg-primary'}" %>
+      </div>
+      <% @tags.each do |tag| %>
+        <div class="col-xl h-100">
+          <%= link_to tag.name, tag_path(tag), class: "imb-badge badge fs-6 #{@tag.try(:id) == tag.id ? 'text-bg-dark' : 'text-bg-primary'}" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+<div id="<%= dom_id post %>">
+  <div class="card" style="width: 18rem;">
+    <%= image_tag "sample#{(1..4).to_a.sample}.jpg" %>
+    <div class="card-body">
+
+      <h5 class="card-title"><%= post.title %></h5>
+      <p class="card-text"><%= post.body %></p>
+
+      <%= link_to "View", post_path(post), class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_post_path(post), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
