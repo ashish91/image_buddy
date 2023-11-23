@@ -1,0 +1,27 @@
+.imb-user-profile {
+  background-color: darkolivegreen;
+  height: 180px;
+}
+
+.imb-profile-link > a {
+  color: white;
+  text-decoration: none;
+}
+
+.imb-profile-link:after {
+  content: '';
+  float: left;
+  background: #fff;
+  width: 100%;
+  height: 5px;
+  border-radius: 2px;
+  margin: 4px 0 7px 0;
+}
+
+.imb-profile-link.active > a {
+  font-weight: bold;
+}
+
+.imb-profile-link.active:after {
+  height: 6px;
+}

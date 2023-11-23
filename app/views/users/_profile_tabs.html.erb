@@ -1,0 +1,29 @@
+<section class="imb-user-profile">
+  <div class="container h-75 d-flex align-items-center">
+    <div class="row mx-end">
+      <div class="col-xl fs-2 fw-bold text-white">
+        <span><%= current_user.email %></span>
+      </div>
+    </div>
+  </div>
+  <div class="container h-25 d-flex align-items-end">
+
+    <div class="row mx-auto">
+      <div class="col-xl h-100 imb-profile-link <%= 'active' if current_page?(feeds_users_path)%>"">
+        <%= link_to "Feed", feeds_users_path, class: 'px-2' %>
+      </div>
+
+      <div class="col-xl h-100 imb-profile-link <%= 'active' if current_page?(posts_users_path)%>">
+        <%= link_to "Posts", posts_users_path, class: 'px-2' %>
+      </div>
+
+      <div class="col-xl h-100 imb-profile-link <%= 'active' if current_page?(comments_users_path)%>"">
+        <%= link_to "Comments", comments_users_path, class: 'px-2' %>
+      </div>
+
+      <div class="col-xl h-100 imb-profile-link <%= 'active' if current_page?(about_users_path)%>"">
+        <%= link_to "About", about_users_path, class: 'px-2' %>
+      </div>
+    </div>
+  </div>
+</section>
