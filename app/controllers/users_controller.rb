@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def posts
-    @posts = Post.where(creator_id: current_user.id)
+    @posts = Post.where(user_id: current_user.id)
   end
 
   def comments

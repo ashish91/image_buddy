@@ -1,8 +1,38 @@
 <section class="container">
-  <h1>New post</h1>
 
-  <div class="mt-5">
-    <%= render "form", post: @post %>
+  <h1 class="mt-5">New post</h1>
+
+  <%= render "form", post: @post %>
+
+
+  <div class="mt-5 w-50">
+   <%= form_with(model: @post) do |f| %>
+      <% if @post.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+          <ul>
+            <% @post.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= f.label :title, class: "form-label" %>
+        <%= f.text_field :title, placeholder: 'Enter article title here', class: 'form-control' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :body, class: "form-label" %>
+        <%= f.text_area :body, placeholder: 'Enter article content here', class: 'form-control' , size: "50x15" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.file_field :image %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary mt-4' %>
+    <% end %>
   </div>
 
   <br>
@@ -10,4 +40,5 @@
   <div class="mt-5">
     <%= link_to "Back to posts", posts_path %>
   </div>
+
 </section>
