@@ -15,17 +15,5 @@
  */
 
 @import "bootstrap";
-
-.imb-tag-filter {
-  background-color: whitesmoke;
-  height: 80px;
-}
-
-.imb-badge {
-  color: white;
-  text-decoration-line: none;
-  &:hover {
-    color: inherit;
-    text-decoration: inherit;
-  }
-}
+@import "tags";
+@import "layout";

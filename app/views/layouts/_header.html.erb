@@ -9,9 +9,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-        <li class="nav-item">
-          <a class="nav-link" href="#images">Images</a>
-        </li>
+        <% if current_user.present? %>
+          <li class="nav-item">
+            <%= link_to "New Post", new_post_path, class: "nav-link" %>
+          </li>
+        <% end %>
 
         <% if current_user.nil? %>
           <li class="nav-item">

@@ -14,10 +14,15 @@
 <!--<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
 
-    <%= render "layouts/header" %>
-    <main>
+    <div class="page-header">
+      <%= render "layouts/header" %>
+    </div>
+    <main class="page-body">
       <%= yield %>
+      <section height="200"></section>
     </main>
-    <%= render "layouts/footer" %>
+    <div class="page-footer">
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>

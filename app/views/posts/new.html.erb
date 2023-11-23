@@ -1,9 +1,13 @@
-<h1>New post</h1>
+<section class="container">
+  <h1>New post</h1>
 
-<%= render "form", post: @post %>
+  <div class="mt-5">
+    <%= render "form", post: @post %>
+  </div>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to posts", posts_path %>
-</div>
+  <div class="mt-5">
+    <%= link_to "Back to posts", posts_path %>
+  </div>
+</section>

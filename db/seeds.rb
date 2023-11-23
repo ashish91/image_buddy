@@ -11,14 +11,22 @@ Post.destroy_all
 Tag.destroy_all
 
 admin = User.create!(email: 'admin@imagebuddy.com', password: 'password123')
+admin.add_role(:admin)
 moderator = User.create!(email: 'moderator@imagebuddy.com', password: 'password123')
+admin.add_role(:moderator)
 user = User.create!(email: 'user@imagebuddy.com', password: 'password123')
+admin.add_role(:user)
 
 25.times do
-  Post.create!(
+  post = Post.create!(
     title: Faker::Lorem.words(number: (1..5).to_a.sample).join(" "),
     body: Faker::Lorem.sentence(word_count: (10..25).to_a.sample),
     user: [admin, moderator, user].sample
+  )
+  image_name = "sample#{(1..4).to_a.sample}.jpg"
+  post.image.attach(
+    io: File.open("db/sample/images/#{image_name}"),
+    filename: image_name
   )
 end
 
