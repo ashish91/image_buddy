@@ -9,6 +9,12 @@
         </a>
       </div>
 
+      <div class="mx-3">
+        <label class='mx-2'>
+          0
+        </label>
+      </div>
+
       <div>
         <a href="#">
          <i class="bi bi-file-arrow-down-fill mx-3" style="font-size: 3vh; color: cornflowerblue;"></i>
@@ -27,10 +33,24 @@
           <%= link_to "", post_path(@post), class: "stretched-link" %>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="row">
+      <div class="mt-5 w-50">
+        <%= form_with model: @comment do |f| %>
+          <div class="row" style="height: 90%;">
+            <%= f.text_area :content, placeholder: 'Write comment', class: 'form-control' , size: "30x5" %>
+          </div>
+          <%= f.hidden_field :post_id, value: @post.id %>
+          <%= f.hidden_field :post_type, value: :Post %>
+          <div class="row" style="height: 10%">
+            <div class="col-xl-10 py-3">
+            </div>
+            <div class="col-xl-2 py-3 ms-auto px-5">
+              <%= f.submit 'Post', class: 'btn btn-primary btn-sm' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <!-- <div>

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :posts
   resources :images
 
+  resources :comments, only: [:create]
+
   resources :users, only: [] do
     collection do
       get :feeds
