@@ -1,13 +1,43 @@
 <p style="color: green"><%= notice %></p>
 
 <section class="container">
-  <%= render @post %>
+  <div class="row">
+    <div class="col-xl imb-like">
+      <div>
+        <a href="#">
+         <i class="bi bi-file-arrow-up-fill mx-3" style="font-size: 3vh; color: cornflowerblue;"></i>
+        </a>
+      </div>
 
-  <div>
+      <div>
+        <a href="#">
+         <i class="bi bi-file-arrow-down-fill mx-3" style="font-size: 3vh; color: cornflowerblue;"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-xl imb-post">
+      <div class="card w-50">
+        <%= image_tag @post.image %>
+        <div class="card-body">
+
+          <h5 class="card-title"><%= @post.title %></h5>
+          <p class="card-text"><%= @post.body %></p>
+
+          <%= link_to "", post_path(@post), class: "stretched-link" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  </div>
+
+  <!-- <div>
     <%= link_to "Edit this post", edit_post_path(@post) %> |
     <%= link_to "Back to posts", posts_path %>
 
     <%= button_to "Destroy this post", @post, method: :delete %>
-  </div>
+  </div> -->
 </section>
 

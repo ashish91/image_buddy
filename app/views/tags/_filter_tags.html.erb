@@ -6,7 +6,7 @@
       </div>
       <% @tags.each do |tag| %>
         <div class="col-xl h-100">
-          <%= link_to tag.name, tag_path(tag), class: "imb-badge badge fs-6 #{@tag.try(:id) == tag.id ? 'text-bg-dark' : 'text-bg-primary'}" %>
+          <%= link_to "##{tag.name}", tag_path(tag), class: "imb-badge badge fs-6 #{@tag.try(:id) == tag.id ? 'text-bg-dark' : 'text-bg-primary'}" %>
         </div>
       <% end %>
     </div>
