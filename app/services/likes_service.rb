@@ -9,13 +9,17 @@ class LikesService
   end
 
   def toggle_upvote
-    destroyed_vote = destroy_existing_vote!
-    destroyed_vote == 'upvote' ? true : create_like('upvote')
+    @parent.class.transaction do
+      destroyed_vote = destroy_existing_vote!
+      destroyed_vote == 'upvote' ? true : create_like('upvote')
+    end
   end
 
   def toggle_downvote
-    destroyed_vote = destroy_existing_vote!
-    destroyed_vote == 'downvote' ? true : create_like('downvote')
+    @parent.class.transaction do
+      destroyed_vote = destroy_existing_vote!
+      destroyed_vote == 'downvote' ? true : create_like('downvote')
+    end
   end
 
   def get_post

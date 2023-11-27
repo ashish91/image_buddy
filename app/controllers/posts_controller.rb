@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :post_was_viewed!, only: [:show]
 
   # GET /posts or /posts.json
   def index
@@ -71,5 +72,12 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.fetch(:post, {}).permit(:title, :body, :image)
+    end
+
+    def post_was_viewed!
+      PostsViewService.new(
+        post: @post,
+        user: current_user
+      ).update_view!
     end
 end

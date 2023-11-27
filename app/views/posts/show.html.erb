@@ -15,7 +15,7 @@
 
       <div class="mx-3">
         <label class='mx-2'>
-          0
+          <%= @post.likes_count %>
         </label>
       </div>
 
@@ -30,6 +30,15 @@
         <!-- <a href="#">
          <i class="bi bi-file-arrow-down-fill mx-3" style="font-size: 3vh; color: cornflowerblue;"></i>
         </a> -->
+      </div>
+
+      <div class="mx-2">
+        <div class="d-flex">
+          <i class="bi bi-eye-fill"></i>
+          <span class="ms-2">
+            <%= @post.views_count %>
+          <span>
+        </div>
       </div>
     </div>
 
