@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_23_120714) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_27_105601) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_120714) do
     t.index ["parent_type", "parent_id"], name: "index_comments_on_parent"
   end
 
+  create_table "feeds", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "creator_id", null: false
+    t.integer "views_count", default: 0, null: false
+    t.integer "likes_count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_feeds_on_creator_id"
+    t.index ["post_id"], name: "index_feeds_on_post_id"
+    t.index ["user_id"], name: "index_feeds_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "parent_type", null: false
@@ -79,6 +94,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_120714) do
   create_table "posts_tags", id: false, force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "tag_id", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followee_id"], name: "index_relationships_on_followee_id"
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -129,8 +153,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_120714) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users", column: "creator_id"
+  add_foreign_key "feeds", "posts"
+  add_foreign_key "feeds", "users"
+  add_foreign_key "feeds", "users", column: "creator_id"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "relationships", "users", column: "followee_id"
+  add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "views", "posts"
   add_foreign_key "views", "users", column: "viewer_id"
 end
