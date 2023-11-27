@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   resources :images
 
   resources :comments, only: [:create]
+  resources :likes, only: [] do
+    collection do
+      post :upvote
+      post :downvote
+    end
+  end
 
   resources :users, only: [] do
     collection do

@@ -4,9 +4,13 @@
   <div class="row">
     <div class="col-xl imb-like">
       <div>
-        <a href="#">
-         <i class="bi bi-file-arrow-up-fill mx-3" style="font-size: 3vh; color: cornflowerblue;"></i>
-        </a>
+        <%= button_to upvote_likes_path, params: { like: {parent_type: 'Post', parent_id: @post.id } }, class: 'imb-like-button' do %>
+          <% if @upvote.present? %>
+            <i class="bi bi-file-arrow-up-fill mx-3 imb-like-icon" style="font-size: 3vh;"></i>
+          <% else %>
+            <i class="bi bi-file-arrow-up-fill mx-3 imb-like-icon" style="font-size: 3vh; color: cornflowerblue;"></i>
+          <% end %>
+        <% end %>
       </div>
 
       <div class="mx-3">
@@ -16,9 +20,16 @@
       </div>
 
       <div>
-        <a href="#">
+        <%= button_to downvote_likes_path, params: { like: {parent_type: 'Post', parent_id: @post.id } }, class: 'imb-like-button' do %>
+          <% if @downvote.present? %>
+            <i class="bi bi-file-arrow-down-fill mx-3 imb-like-icon" style="font-size: 3vh;"></i>
+          <% else %>
+            <i class="bi bi-file-arrow-down-fill mx-3 imb-like-icon" style="font-size: 3vh; color: cornflowerblue;"></i>
+          <% end %>
+        <% end %>
+        <!-- <a href="#">
          <i class="bi bi-file-arrow-down-fill mx-3" style="font-size: 3vh; color: cornflowerblue;"></i>
-        </a>
+        </a> -->
       </div>
     </div>
 
@@ -39,8 +50,8 @@
           <div class="row" style="height: 90%;">
             <%= f.text_area :content, placeholder: 'Write comment', class: 'form-control' , size: "30x5" %>
           </div>
-          <%= f.hidden_field :post_id, value: @post.id %>
-          <%= f.hidden_field :post_type, value: :Post %>
+          <%= f.hidden_field :parent_id, value: @post.id %>
+          <%= f.hidden_field :parent_type, value: :Post %>
           <div class="row" style="height: 10%">
             <div class="col-xl-10 py-3">
             </div>

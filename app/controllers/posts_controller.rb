@@ -10,6 +10,8 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @comment = Comment.new
+    @upvote = @post.upvotes.where(user: current_user)
+    @downvote = @post.downvotes.where(user: current_user)
   end
 
   # GET /posts/new

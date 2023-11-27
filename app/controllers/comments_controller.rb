@@ -1,13 +1,15 @@
 class CommentsController < ApplicationController
 
   def create
-    @post = Post.find(comment_params[:post_id])
+    @parent = Post.find(comment_params[:parent_id])
     @comment = Comment.new(
       content: comment_params[:content],
       creator_id: current_user.id,
-      parent_id: comment_params[:post_id],
-      parent_type: comment_params[:post_type],
+      parent_id: comment_params[:parent_id],
+      parent_type: comment_params[:parent_type],
     )
+
+    @post = parent.is_a?(Post) ? @parent : @parent.post
 
     respond_to do |format|
       if @comment.save
