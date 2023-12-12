@@ -6,3 +6,6 @@ import "@popperjs/core"
 import jquery from "jquery"
 window.jQuery = jquery
 window.$ = jquery
+
+import "components"
+// import "components/index.jsx"

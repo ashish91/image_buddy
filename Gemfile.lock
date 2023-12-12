@@ -109,6 +109,8 @@ GEM
     irb (1.9.0)
       rdoc
       reline (>= 0.3.8)
+    jass-react-jsx (0.3.0)
+      nodo (>= 1.6.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -136,6 +138,7 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.6.1)
+    nodo (1.6.5)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -232,6 +235,7 @@ DEPENDENCIES
   faker (~> 3.2.2)
   image_processing (~> 1.12)
   importmap-rails
+  jass-react-jsx
   jbuilder
   pg (~> 1.1)
   puma (~> 5.0)
