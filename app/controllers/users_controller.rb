@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:feeds, :posts, :comments, :about]
 
   def feeds
+    @posts = @user.feed
   end
 
   def posts

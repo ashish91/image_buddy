@@ -21,7 +21,7 @@ admin.add_role(:user)
   post = Post.create!(
     title: Faker::Lorem.words(number: (1..5).to_a.sample).join(" "),
     body: Faker::Lorem.sentence(word_count: (10..25).to_a.sample),
-    user: [admin, moderator, user].sample
+    creator: [admin, moderator, user].sample
   )
   image_name = "sample#{(1..4).to_a.sample}.jpg"
   post.image.attach(

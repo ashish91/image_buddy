@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_105601) do
     t.bigint "user_id", null: false
     t.string "parent_type", null: false
     t.bigint "parent_id", null: false
-    t.integer "kind"
+    t.integer "kind", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_type", "parent_id"], name: "index_likes_on_parent"
@@ -83,12 +83,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_105601) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.bigint "user_id", null: false
+    t.bigint "creator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "views_count", default: 0
     t.integer "likes_count", default: 0
-    t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["creator_id"], name: "index_posts_on_creator_id"
   end
 
   create_table "posts_tags", id: false, force: :cascade do |t|
@@ -157,7 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_105601) do
   add_foreign_key "feeds", "users"
   add_foreign_key "feeds", "users", column: "creator_id"
   add_foreign_key "likes", "users"
-  add_foreign_key "posts", "users"
+  add_foreign_key "posts", "users", column: "creator_id"
   add_foreign_key "relationships", "users", column: "followee_id"
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "views", "posts"

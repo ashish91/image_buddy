@@ -1,1 +1,17 @@
 <%= render 'users/profile_tabs', locals: { user: @user } %>
+
+<section class="container">
+
+  <% @posts.find_in_batches(batch_size: 4) do |posts_group| %>
+    <div class="row my-5">
+
+      <% posts_group.each do |post| %>
+        <div class="col-xl-3 h-100">
+          <%= render post, locals: { post: post } %>
+        </div>
+      <% end %>
+
+    </div>
+  <% end %>
+
+</section>
