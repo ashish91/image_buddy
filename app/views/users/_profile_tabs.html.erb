@@ -5,10 +5,15 @@
         <span><%= @user.email %></span>
       </div>
       <div class="col-xl text-white my-2">
-        <span><%= button_to "Follow", follow_relationship_path(@user.id) %></span>
+        <% if current_user.follows?(@user) %>
+          <%= button_to "Unfollow", follow_relationship_path(@user.id), class: 'btn btn-light'  %>
+        <% else %>
+          <%= button_to "Follow", follow_relationship_path(@user.id), class: 'btn btn-primary'  %>
+        <% end %>
       </div>
     </div>
   </div>
+
   <div class="container h-25 d-flex align-items-end">
     <div class="row mx-auto">
       <div class="col-xl h-100 imb-profile-link <%= 'active' if current_page?(feeds_user_path(@user.id))%>">

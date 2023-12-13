@@ -1,13 +1,19 @@
 class RelationshipsController < ApplicationController
 
   def follow
-    if current_user.id != params[:id] && !relationship_exists?
-      Relationship.create!(
-        follower_id: current_user.id,
-        followee_id: params[:id]
-      )
+    if current_user.id != params[:id]
+      if relationship_exists?
+        Relationship.find_by(
+          follower_id: current_user.id,
+          followee_id: params[:id]
+        ).destroy!
+      else
+        Relationship.create!(
+          follower_id: current_user.id,
+          followee_id: params[:id]
+        )
+      end
     end
-    debugger
 
     redirect_to feeds_user_path(params[:id])
   end

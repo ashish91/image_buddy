@@ -12,4 +12,10 @@ class User < ApplicationRecord
   has_many :followers, class_name: 'User'
   has_many :followees, class_name: 'User'
 
+  def follows?(user)
+    Relationship.exists?(
+      follower_id: self.id,
+      followee_id: user.id
+    )
+  end
 end
