@@ -27,7 +27,7 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <%= link_to "Profile", feeds_users_path, class: 'dropdown-item' %>
+                <%= link_to "Profile", feeds_user_path(current_user.id), class: 'dropdown-item' %>
               </li>
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><hr class="dropdown-divider"></li>

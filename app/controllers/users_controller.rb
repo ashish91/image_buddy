@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:feeds, :posts, :comments, :about]
 
   def feeds
   end
@@ -13,5 +14,10 @@ class UsersController < ApplicationController
 
   def about
   end
+
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
 end

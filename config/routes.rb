@@ -18,11 +18,17 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [] do
-    collection do
+    member do
       get :feeds
       get :posts
       get :comments
       get :about
+    end
+  end
+
+  resources :relationships, only: [] do
+    member do
+      post :follow
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
