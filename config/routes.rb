@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :tags
-  resources :posts
+  resources :posts do
+    collection do
+      get :search
+    end
+  end
   resources :images
 
   resources :comments, only: [:create]

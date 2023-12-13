@@ -8,6 +8,11 @@ class PostsController < ApplicationController
     @tags = Tag.all
   end
 
+  def search
+    @posts = Post.where("title like ?", "%#{search_params[:title]}%")
+    @tags = Tag.all
+  end
+
   # GET /posts/1 or /posts/1.json
   def show
     @comment = Comment.new
@@ -72,6 +77,10 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.fetch(:post, {}).permit(:title, :body, :image)
+    end
+
+    def search_params
+      params.permit(:title)
     end
 
     def post_was_viewed!
