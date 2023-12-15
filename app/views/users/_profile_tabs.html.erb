@@ -4,13 +4,16 @@
       <div class="col-xl fs-2 fw-bold text-white">
         <span><%= @user.email %></span>
       </div>
-      <div class="col-xl text-white my-2">
-        <% if current_user.follows?(@user) %>
-          <%= button_to "Unfollow", follow_relationship_path(@user.id), class: 'btn btn-light'  %>
-        <% else %>
-          <%= button_to "Follow", follow_relationship_path(@user.id), class: 'btn btn-primary'  %>
-        <% end %>
-      </div>
+
+      <% if @user.id != current_user.id %>
+        <div class="col-xl text-white my-2">
+          <% if current_user.follows?(@user) %>
+            <%= button_to "Unfollow", follow_relationship_path(@user.id), class: 'btn btn-light'  %>
+          <% else %>
+            <%= button_to "Follow", follow_relationship_path(@user.id), class: 'btn btn-primary'  %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 

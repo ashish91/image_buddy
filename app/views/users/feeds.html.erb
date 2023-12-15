@@ -2,12 +2,12 @@
 
 <section class="container">
 
-  <% @posts.find_in_batches(batch_size: 4) do |posts_group| %>
+  <% @feeds.find_in_batches(batch_size: 4) do |feeds_group| %>
     <div class="row my-5">
 
-      <% posts_group.each do |post| %>
+      <% feeds_group.each do |feed| %>
         <div class="col-xl-3 h-100">
-          <%= render post, locals: { post: post } %>
+          <%= render 'users/feed', feed: feed %>
         </div>
       <% end %>
 

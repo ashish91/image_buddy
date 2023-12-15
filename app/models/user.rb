@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: "creator_id", class_name: "Comment", dependent: :destroy
   has_many :likes
 
+  has_many :feeds
+
   # has_many :followers, through: :relationships
   # has_many :followees, foreign_key: "follower_id", class_name: 'Relationship'
 
@@ -25,9 +27,5 @@ class User < ApplicationRecord
       follower_id: self.id,
       followee_id: user.id
     )
-  end
-
-  def feed
-    Post.where(creator: followees)
   end
 end

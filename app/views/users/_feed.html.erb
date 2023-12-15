@@ -1,0 +1,12 @@
+<div id="<%= dom_id feed %>">
+  <div class="card w-100">
+    <%= image_tag feed.image %>
+    <div class="card-body">
+
+      <h5 class="card-title"><%= feed.title %></h5>
+      <p class="card-text"><%= feed.body %></p>
+
+      <%= link_to "", post_path(feed), class: "stretched-link" %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,12 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users
+
+  # mount Sidekiq::Web in your Rails app
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   resources :tags
   resources :posts do

@@ -1,4 +1,4 @@
 class Feed < ApplicationRecord
-  has_one :post
-
+  belongs_to :post
+  delegate :title, :body, :image, :views_count, :likes_count, to: :post
 end

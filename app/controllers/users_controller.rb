@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:feeds, :posts, :comments, :about]
 
   def feeds
-    @posts = @user.feed
+    @feeds = @user.feeds
   end
 
   def posts
-    @posts = Post.where(user_id: current_user.id)
+    @posts = Post.where(creator: current_user)
   end
 
   def comments
