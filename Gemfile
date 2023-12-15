@@ -54,6 +54,7 @@ gem "rolify", '~> 6.0.1'
 gem 'sidekiq', '~> 7.2'
 
 gem "pundit", "~> 2.3"
+gem 'administrate', '~> 0.19'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
