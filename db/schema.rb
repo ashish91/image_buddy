@@ -55,13 +55,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_105601) do
   end
 
   create_table "feeds", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
     t.bigint "creator_id", null: false
-    t.integer "views_count", default: 0, null: false
-    t.integer "likes_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_feeds_on_creator_id"

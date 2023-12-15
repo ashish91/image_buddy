@@ -3,7 +3,8 @@
     <%= image_tag feed.image %>
     <div class="card-body">
 
-      <h5 class="card-title"><%= feed.title %></h5>
+      <h6 class="card-title"><%= feed.post.creator.email %></h5>
+      <h4 class="card-title"><%= feed.title %></h5>
       <p class="card-text"><%= feed.body %></p>
 
       <%= link_to "", post_path(feed), class: "stretched-link" %>
